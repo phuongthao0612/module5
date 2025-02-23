@@ -1,0 +1,30 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.input {
+    padding: 8px;
+    width: 250px;
+    margin-right: 10px;
+}
+
+.button {
+    padding: 8px 15px;
+    background: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.item {
+    background: #f4f4f4;
+    padding: 10px;
+    margin: 5px auto;
+    width: 300px;
+}
