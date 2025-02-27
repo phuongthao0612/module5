@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as bookService from "../services/BookService";
 import { toast } from "react-toastify";
-import { Table, Button, Container } from "react-bootstrap";
+import { Table, Button, Container, Modal } from "react-bootstrap";
 
 const BookList = () => {
     const [books, setBooks] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [selectedBookId, setSelectedBookId] = useState(null);
 
     useEffect(() => {
         const getAll = async () => {
@@ -15,16 +17,27 @@ const BookList = () => {
         getAll();
     }, []);
 
-    const handleDelete = async (id) => {
-        if (window.confirm("Are you sure you want to delete this book?")) {
+    const handleShowModal = (id) => {
+        setSelectedBookId(id);
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+        setSelectedBookId(null);
+    };
+
+    const handleDelete = async () => {
+        if (selectedBookId) {
             try {
-                await bookService.deleteBook(id);
-                setBooks(books.filter((book) => book.id !== id));
+                await bookService.deleteBook(selectedBookId);
+                setBooks(books.filter((book) => book.id !== selectedBookId));
                 toast.success("Book deleted successfully!");
             } catch (error) {
                 toast.error("Failed to delete book!");
             }
         }
+        handleCloseModal();
     };
 
     return (
@@ -54,7 +67,7 @@ const BookList = () => {
                                     Edit
                                 </Button>
                             </Link>
-                            <Button variant="danger" onClick={() => handleDelete(book.id)}>
+                            <Button variant="danger" onClick={() => handleShowModal(book.id)}>
                                 Delete
                             </Button>
                         </td>
@@ -62,6 +75,23 @@ const BookList = () => {
                 ))}
                 </tbody>
             </Table>
+
+            <Modal show={showModal} onHide={handleCloseModal} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirm Deletion</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Are you sure you want to delete this book?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModal}>
+                        Cancel
+                    </Button>
+                    <Button variant="danger" onClick={handleDelete}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </Container>
     );
 };
