@@ -1,0 +1,47 @@
+{
+  "clothings": [
+    {
+      "code": "MSP1",
+      "name": "áo abcd",
+      "date": "04/03/2025",
+      "quantity": 98,
+      "types": {
+        "id": "1",
+        "name": "áo"
+      },
+      "id": "1"
+    },
+    {
+      "code": "MSP2",
+      "name": "áo thun",
+      "date": "01/03/2025",
+      "quantity": 10,
+      "types": {
+        "id": "2",
+        "name": "quần"
+      },
+      "id": "2"
+    },
+    {
+      "code": "MSP3",
+      "name": "quần abcd",
+      "date": "04/03/2025",
+      "quantity": 65,
+      "types": {
+        "id": "2",
+        "name": "quần"
+      },
+      "id": "3"
+    }
+  ],
+  "types": [
+    {
+      "id": "1",
+      "name": "áo"
+    },
+    {
+      "id": "2",
+      "name": "quần"
+    }
+  ]
+}

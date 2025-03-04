@@ -1,14 +1,41 @@
 {
   "books": [
     {
-      "title": "conan",
-      "quantity": 10,
-      "id": "ccee"
+      "title": "fubao",
+      "quantity": 15,
+      "categories": {
+        "id": "1",
+        "name": "xam"
+      },
+      "id": "1595"
     },
     {
-      "id": "1595",
-      "title": "fubao",
-      "quantity": 15
+      "title": "doreamon",
+      "quantity": 11,
+      "categories": {
+        "id": "2",
+        "name": "tao lao"
+      },
+      "id": "b270"
+    },
+    {
+      "id": "deb0",
+      "title": "conan",
+      "quantity": 10,
+      "categories": {
+        "id": "2",
+        "name": "tao lao"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "xam"
+    },
+    {
+      "id": "2",
+      "name": "tao lao"
     }
   ]
 }
